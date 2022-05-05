@@ -49,7 +49,7 @@ export function HomePage({
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     onSubmitForm();
-  });
+  }, []);
 
   const reposListProps = {
     loading,
