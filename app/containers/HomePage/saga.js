@@ -14,12 +14,12 @@ import { makeSelectUsername } from 'containers/HomePage/selectors';
  */
 export function* getRepos() {
   // Select username from store
-  const requestURL = `/api/version`;
+  // const requestURL = `/api/version`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    console.log(repos);
+    // const repos = yield call(request, requestURL);
+    // console.log(repos);
   } catch (err) {
     yield put(repoLoadingError(err));
   }

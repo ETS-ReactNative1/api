@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
+import { useClearCacheCtx } from 'react-clear-cache';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
@@ -46,6 +46,8 @@ export function HomePage({
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
+  const { isLatestVersion, emptyCacheStorage } = useClearCacheCtx();
+
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     onSubmitForm();
@@ -71,6 +73,22 @@ export function HomePage({
           <H2>
             <FormattedMessage {...messages.startProjectHeader} />
           </H2>
+          <p>
+            <strong>Is latest version</strong>: {isLatestVersion ? 'Yes' : 'No'}
+          </p>
+          {!isLatestVersion && (
+            <p>
+              <a
+                href="#clear"
+                onClick={e => {
+                  e.preventDefault();
+                  emptyCacheStorage();
+                }}
+              >
+                Update version
+              </a>
+            </p>
+          )}
           <p>
             <FormattedMessage {...messages.startProjectMessage} />
           </p>

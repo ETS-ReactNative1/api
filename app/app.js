@@ -7,7 +7,7 @@
 
 // Needed for redux-saga es6 generator support
 import '@babel/polyfill';
-
+import { ClearCacheProvider } from 'react-clear-cache';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -51,7 +51,9 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ClearCacheProvider duration={5000} filename="build.json">
+            <App />
+          </ClearCacheProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
