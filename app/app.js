@@ -51,7 +51,7 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <ClearCacheProvider duration={5000} filename="build.json">
+          <ClearCacheProvider duration={100} filename="build.json">
             <App />
           </ClearCacheProvider>
         </ConnectedRouter>
