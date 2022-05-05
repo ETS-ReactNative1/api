@@ -15,4 +15,6 @@ module.exports = function addProdMiddlewares(app, options) {
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(outputPath, 'index.html')),
   );
+
+  app.get('/api/version', (req, res) => res.send({ build_number: 1 }));
 };

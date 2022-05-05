@@ -39,7 +39,6 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/api/version" component={HomePage} />
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
